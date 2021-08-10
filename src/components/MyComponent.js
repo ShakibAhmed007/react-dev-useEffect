@@ -8,7 +8,11 @@ const MyComponent = () => {
   };
 
   useEffect(() => {
-    setInterval(tick, 1000);
+    const interval = setInterval(tick, 1000);
+    // this return will execute when component unmount
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
